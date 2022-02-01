@@ -7,10 +7,10 @@ var app = express();
 
 // Set the view engine to use EJS as well as set the default views directory
 app.set('view engine', 'ejs');
-app.set('views', __dirname + '/public/views/');
+app.set('views', '/var/www/html' + '/public/views/');
 
 // This tells Express out of which directory to serve static assets like CSS and images
-app.use(express.static(__dirname + '/public'));
+app.use(express.static('/var/www/html' + '/public'));
 
 let backend_url = process.env.BACKEND_URL || "localhost:3000"
 
