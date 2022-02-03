@@ -22,6 +22,7 @@ app.get('/', function(req, res){
 // For the movies route, we’ll call the getAccessToken middleware to ensure we have an access token. If we do have a valid access_token, we’ll make a request with the superagent library and we’ll be sure to add our access_token in an Authorization header before making the request to our API.
 // Once the request is sent out, our API will validate that the access_token has the right scope to request the /movies resource and if it does, will return the movie data. We’ll take this movie data, and pass it alongside our movies.ejs template for rendering
 app.get('/movies', function(req, res){
+  console.log(backend_url)
   request
     .get(`http://${backend_url}/movies`)
     .end(function(err, data) {
