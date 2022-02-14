@@ -2,7 +2,10 @@ node {
     // The first milestone step starts tracking concurrent build order
     milestone()
     stage('Build') {
-        echo "Building"
+        steps {
+            echo "Building"
+        }
+        
     }
 }
 
@@ -14,10 +17,16 @@ node {
 lock(resource: 'myResource', inversePrecedence: true){
     node('test') {
         stage('Unit Tests') {
-            echo "Unit Tests"
+            steps {
+                echo "Unit Tests"
+            }
+            
         }
         stage('System Tests') {
-            echo "System Tests"
+            steps {
+                echo "System Tests"
+            }
+            
         }
     }
     milestone()
@@ -31,6 +40,9 @@ node {
     input "Deploy?"
     milestone()
     stage('Deploy') {
-        echo "Deploying"
+        steps {
+            echo "Deploying"
+        }
+        
     }
 }
