@@ -1,7 +1,7 @@
-stage('Build') {
+node {
     // The first milestone step starts tracking concurrent build order
     milestone()
-    node {
+    stage('Build') {
         echo "Building"
     }
 }
@@ -27,10 +27,10 @@ lock(resource: 'myResource', inversePrecedence: true){
 // from a user. Several builds might reach this step waiting for input.
 // When a user promotes a specific build all preceding builds are aborted,
 // ensuring that the latest code is always deployed.
-stage('Deploy') {
+node {
     input "Deploy?"
     milestone()
-    node {
+    stage('Deploy') {
         echo "Deploying"
     }
 }
