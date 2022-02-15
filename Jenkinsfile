@@ -15,7 +15,7 @@ pipeline {
             steps {
                 echo 'deploying the application'
                 sshagent(credentials: ['SSH-EC2']) {
-                    sh "ssh -o StrictHostKeyChecking=no -l ec2-user@18.228.214.12 'mkdir /home/ec2-user/test'"
+                    sh "ssh -o StrictHostKeyChecking=no -l ec2-user 18.228.214.12 'mkdir /home/ec2-user/test'"
                     
                 }
             }
