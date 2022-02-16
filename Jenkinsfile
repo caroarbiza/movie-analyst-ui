@@ -15,8 +15,8 @@ pipeline {
             steps {
                 echo 'deploying the application'
                 sshagent(credentials: ['SSH-EC2']) {
-                    sh "ssh -o StrictHostKeyChecking=no -l ec2-user 18.228.214.12 'mkdir /home/ec2-user/test'"
-                    
+                    sh "ssh -o StrictHostKeyChecking=no -l ec2-user 10.0.1.100 'docker run -e PORT=80 -e BACKEND_URL=10.0.3.100:3036 -dp 80:80 caroarbiza/movie-frontend:2'"
+                    sh "ssh -o StrictHostKeyChecking=no -l ec2-user 10.0.2.100 'docker run -e PORT=80 -e BACKEND_URL=10.0.3.100:3036 -dp 80:80 caroarbiza/movie-frontend:2'"
                 }
             }
         }
