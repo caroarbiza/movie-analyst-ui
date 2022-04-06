@@ -1,9 +1,9 @@
 node {
     stage('Build') {
         checkout scm
-        def customImage = docker.build("caroarbiza/movie-frontend:3")
+        def customImage = docker.build("caroarbiza/movie-frontend:latest")
         docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-        customImage.push("3")
+        customImage.push("latest")
         }
 
     }
